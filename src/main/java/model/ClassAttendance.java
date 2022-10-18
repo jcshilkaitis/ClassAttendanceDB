@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
  * CIS175 - Fall 2022
  * Oct 6, 2022
  */
+
 @Entity
 public class ClassAttendance {
 	@Id
@@ -26,10 +27,9 @@ public class ClassAttendance {
 	private int id;
 	private String className;
 	private LocalDate classDate;
-	private LocalTime classTime;
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Instructor instructor;
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER )
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER )
 	private List<StudentInfo> listOfStudents;
 	
 	
@@ -38,42 +38,32 @@ public class ClassAttendance {
 		super();
 	}
 
-	public ClassAttendance(int id, String className, LocalDate classDate, LocalTime classTime, Instructor instructor,
+	public ClassAttendance(int id, String className, LocalDate classDate, Instructor instructor,
 			List<StudentInfo> listOfStudents) {
 		super();
 		this.id = id;
 		this.className = className;
 		this.classDate = classDate;
-		this.classTime = classTime;
 		this.instructor = instructor;
 		this.listOfStudents = listOfStudents;
 	}
 
-	public ClassAttendance(String className, LocalDate classDate, LocalTime classTime, Instructor instructor,
+	public ClassAttendance(String className, LocalDate classDate, Instructor instructor,
 			List<StudentInfo> listOfStudents) {
 		super();
 		this.className = className;
 		this.classDate = classDate;
-		this.classTime = classTime;
 		this.instructor = instructor;
 		this.listOfStudents = listOfStudents;
 	}
 	
-	
 
-	public ClassAttendance(String className, LocalDate classDate, LocalTime classTime, Instructor instructor) {
-		super();
-		this.className = className;
-		this.classDate = classDate;
-		this.classTime = classTime;
-		this.instructor = instructor;
-	}
 
 
 	@Override
 	public String toString() {
-		return "ClassAttendance [id=" + id + ", className=" + className + ", classDate=" + classDate + ", classTime="
-				+ classTime + ", instructor=" + instructor + ", listOfStudents=" + listOfStudents + "]";
+		return "ClassAttendance [id=" + id + ", className=" + className + ", classDate=" + classDate + ", instructor="
+				+ instructor + ", listOfStudents=" + listOfStudents + "]";
 	}
 
 	public int getId() {
@@ -100,13 +90,6 @@ public class ClassAttendance {
 		this.classDate = classDate;
 	}
 
-	public LocalTime getClassTime() {
-		return classTime;
-	}
-
-	public void setClassTime(LocalTime classTime) {
-		this.classTime = classTime;
-	}
 
 	public Instructor getInstructor() {
 		return instructor;

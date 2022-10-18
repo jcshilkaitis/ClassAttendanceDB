@@ -8,7 +8,7 @@
 <title>Attendance</title>
 </head>
 <body>
-	<form method="post" action="attendancenavigationServlet">
+	<form method="post" action="attendanceNavServlet">
 		<table>
 			<c:forEach items="${requestScope.allAttendance}" var="currentattendance">
 				<tr>
@@ -16,10 +16,7 @@
 					<td><h2>${currentattendance.className}</h2></td>
 				</tr>
 				<tr>
-					<td colspan="3">Class Date: ${currentattendance.ClassDate}</td>
-				</tr>
-				<tr>
-					<td colspan="3">Class Time: ${currentattendance.ClassTime}</td>
+					<td colspan="3">Class Date: ${currentattendance.classDate}</td>
 				</tr>
 				<tr>
 					<td colspan="3">Instructor: ${currentattendance.instructor.name}</td>
@@ -27,16 +24,15 @@
 				<c:forEach var="listVal" items="${currentattendance.listOfStudents}">
 					<tr>
 						<td></td>
-						<td colspan="3">${listVal.FirstName}, ${listVal.LastName}</td>
+						<td colspan="3">${listVal.firstName}, ${listVal.lastName}</td>
 					</tr>
 				</c:forEach>
 			</c:forEach>
 		</table>
-		<input type="submit" value="edit" name="doThisToList"> <input
-			type="submit" value="delete" name="doThisToList"> <input
-			type="submit" value="add" name="doThisToList">
+		<input type="submit" value="edit" name="action"> <input
+			type="submit" value="delete" name="action">
 	</form>
-	<a href="addItemsForListServlet">Create a new List</a>
-	<a href="index2.html">Insert a new item</a>
+	<a href="addStudentToClassServlet">Create a new class</a>
+	<a href="index.html">Add a new student</a>
 </body>
 </html>

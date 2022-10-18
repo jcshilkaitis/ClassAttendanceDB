@@ -31,7 +31,7 @@ public class ClassAttendanceTester {
 		joesClass.add(sam);
 		joesClass.add(connor);
 
-		ClassAttendance beginnerClass = new ClassAttendance("Beginner Class", LocalDate.now(), LocalTime.now(), joe, joesClass);
+		ClassAttendance beginnerClass = new ClassAttendance("Beginner Class", LocalDate.now(), joe, joesClass);
 //		beginnerClass.setListOfStudents(joesClass);
 		cah.insertNewClassAttendance(beginnerClass);
 

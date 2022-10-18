@@ -31,7 +31,7 @@ public class ViewAllStudentsServlet extends HttpServlet {
 		request.setAttribute("allStudents", dao.showAllStudents());
 		String path = "/studentList.jsp";
 		if(dao.showAllStudents().isEmpty()) {
-			path = "/index2.html";
+			path = "/index.html";
 		}
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}

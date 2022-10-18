@@ -1,27 +1,23 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ClassAttendance;
-
 /**
- * Servlet implementation class ViewAllAttendanceServlet
+ * Servlet implementation class AddStduentToClassServlet
  */
-@WebServlet("/viewAllAttendanceServlet")
-public class ViewAllAttendanceServlet extends HttpServlet {
+@WebServlet("/addStudentToClassServlet")
+public class AddStudentToClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllAttendanceServlet() {
+    public AddStudentToClassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +27,12 @@ public class ViewAllAttendanceServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		ClassAttendanceHelper cah = new ClassAttendanceHelper();
-		List<ClassAttendance> ca = cah.getAttendance();
-		request.setAttribute("allAttendance", ca);
-		if (ca.isEmpty()) {
-			request.setAttribute("allAttendance", " ");
-			System.out.println("AllAttendance is empty");
-			
+		StudentInfoHelper sih = new StudentInfoHelper();
+		request.setAttribute("allStudents", sih.showAllStudents());
+		if (sih.showAllStudents().isEmpty()) {
+			request.setAttribute("allStudents", " ");
 		}
-		getServletContext().getRequestDispatcher("/attendancebystudent.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/newClass.jsp").forward(request, response);
 	}
 
 	/**

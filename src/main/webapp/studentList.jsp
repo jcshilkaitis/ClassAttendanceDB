@@ -21,8 +21,7 @@
 			</c:forEach>
 			
 		</table>
-		<input type="submit" value="edit" name="doThisToStudent"> <input
-			type="submit" value="delete" name="doThisToStudent"> <input
+		<input type="submit" value="edit" name="doThisToStudent"> <input type="submit" value="delete" name="doThisToStudent"> <input
 			type="submit" value="add" name="doThisToStudent">
 	</form>
 </body>
